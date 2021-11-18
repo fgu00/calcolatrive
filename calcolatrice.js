@@ -5,14 +5,16 @@ $("#btn4").click(()=>calcola("/"))
 var int=0;
 
 //localStorage.setItem("tabella","");
-$("#tab").append(localStorage.getItem("tabella"));
+//$("#tab").append(localStorage.getItem("tabella"));
 //for(var va=0;va<=int;va++){
 //localStorage.setItem(va,"<tr><td>1</td><td style='text-align:center'>-</td><td>1</td><td>0</td></tr>;");
-//$("#tab").append(localStorage.getItem(va));
+$("#tab").append(JSON.parse(localStorage.getItem(va)));
 //}
-//localStorage.clear();
+localStorage.clear();
 //console.log("nome",localStorage.getItem("nome"));
 //$("#tab").append(localStorage.getItem("nome"));
+var tablearray=[];
+
 var calcola=function(segno){
     var input=$("#num1");
     var input2=$("#num2");
@@ -39,8 +41,11 @@ var calcola=function(segno){
     var string=
     "<tr><td>"+ n1 + "</td><td style='text-align:center'>"+segno+"</td><td>"+  n2+
     "</td><td>"+risultato +"</td></tr>";
-    var table=localStorage.getItem("tabella");
-    localStorage.setItem("tabella",table+string);
+    tablearray.push(string);
+    console.log(tablearray);
+    //var table=localStorage.getItem("tabella");
+   // var jasoarr={"arr":tablearray};
+    localStorage.setItem("tabella",JSON.parse(tablearray));
     $("#tab").append(string);
     int++;
     };
